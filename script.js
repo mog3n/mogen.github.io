@@ -131,4 +131,4 @@ $('#' + time_to_obj[myDate.getDay()]).css('color', '#f47d42');
 
 $('#dynamic-emoji').html(day_to_emoji[myDate.getDay()])
 $('#dynamic-day').html('Happy ' + day_to_str[myDate.getDay()] + '!');
-$('#dynamic-text').html(day_to_description[myDate.getHours()]);
+$('#dynamic-text').html(day_to_description[myDate.getDay()]);
