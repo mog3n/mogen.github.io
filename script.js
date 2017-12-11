@@ -117,8 +117,8 @@ day_to_description = {
 }
 
 // Set appropriate object
-$('#' + date_to_obj[myDate.getDay()]).css('color', 'red');
-$('#' + time_to_obj[myDate.getDay()]).css('color', 'red');
+$('#' + date_to_obj[myDate.getDay()]).css('color', '#f47d42');
+$('#' + time_to_obj[myDate.getDay()]).css('color', '#f47d42');
 
 $('#dynamic-day').html('Happy ' + day_to_str[myDate.getDay()] + '!');
 $('#dynamic-text').html(day_to_description[myDate.getHours()]);
