@@ -67,7 +67,7 @@ function updateMenuPos(){
     var nav_btn_width = $('#nav-btn').innerWidth();
     var nav_btn_height = $('#nav-btn').innerHeight();
 
-    var top = (height - nav_btn_height - 60);
+    var top = (height - nav_btn_height - 20);
     var left = (width - nav_btn_width) / 2;
     console.log(top, left);
     
