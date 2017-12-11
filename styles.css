@@ -198,6 +198,13 @@ body{
 .pad-address:link{
     color: white;
 }
+.pad-address:active{
+    color: white;
+}
+.pad-address:visited{
+    color: white;
+}
+
 
 .pad-title{
     padding-top: 5px;
