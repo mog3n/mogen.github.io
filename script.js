@@ -5,14 +5,14 @@ function toggleMenu(){
     if (menuHidden){
         
         // Main menu appear
-        $('#menu-popup').css('top', $(window).height() + $('#menu-popup').innerHeight());
+        $('#menu-popup').css('top', window.innerHeight + $('#menu-popup').innerHeight());
         $('#menu-popup').css('visibility', 'visible');
-        $('#menu-popup').css('top', $(window).height() - $('#menu-popup').innerHeight());
+        $('#menu-popup').css('top', window.innerHeight - $('#menu-popup').innerHeight());
         // Background dim
         $('#menu-popup-bg').css('top', 0);
         $('#menu-popup-bg').css('visibility', 'visible');
         // Drop menu button
-        $('#nav-btn').css('top', $(window).height() + "px");
+        $('#nav-btn').css('top', window.innerHeight + "px");
         
         menuHidden = false;
         
@@ -48,9 +48,9 @@ function toggleMenu(){
         
     }else{
         // Drop menu
-        $('#menu-popup').css('top', $(window).height() + $('#menu-popup').innerHeight());
+        $('#menu-popup').css('top', window.innerHeight + $('#menu-popup').innerHeight());
         // Drop background
-        $('#menu-popup-bg').css('top', $(window).height() + $('#menu-popup-bg').innerHeight());
+        $('#menu-popup-bg').css('top', window.innerHeight + $('#menu-popup-bg').innerHeight());
         // Show menu button
         updateMenuPos();
         
@@ -61,8 +61,8 @@ function toggleMenu(){
 }
 
 function updateMenuPos(){
-    var width = $(window).width();
-    var height = $(window).height();
+    var width = window.innerWidth;
+    var height = window.innerHeight;
 
     var nav_btn_width = $('#nav-btn').innerWidth();
     var nav_btn_height = $('#nav-btn').innerHeight();
