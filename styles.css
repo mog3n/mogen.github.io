@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700,500|Lato:300,400|Merriweather:300');
+
+html{
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.navigation{
+    position: fixed;
+    z-index: 100;
+    color: white;
+    top: 20px;
+    transition: 0.5s ease;
+}
+
+.nav-btn-icon{
+    display: block;
+    padding-top: 1pt;
+}
+.nav-btn-text{
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+.navigation-btn{
+    display: flex;
+    vertical-align: middle;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff3232+0,e244bb+100 */
+    background: #ff3232; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ff3232 0%, #e244bb 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ff3232 0%,#e244bb 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ff3232 0%,#e244bb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#e244bb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    
+    font-family: "Roboto";
+    letter-spacing: 0.8;
+    font-size: 11pt;
+    border-radius: 100px;
+    color: #fff;
+    
+    -webkit-box-shadow: 0px 0px 75px -10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 75px -10px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 75px -10px rgba(0,0,0,0.4);
+    
+    cursor: pointer;
+}
+
+
+.menu-popup{
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    font-family: 'Roboto';
+    border-radius: 15px 15px 0px 0px;
+    visibility: hidden;
+    transition: 0.5s ease;
+    z-index: 110;
+}
+
+.menu-popup-bg{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    z-index: 101;
+    visibility: hidden;
+    transition: 0.2s ease;
+}
+
+.menu-popup-top{
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    border-bottom-style: solid;
+    border-bottom-width: 1pt;
+    border-bottom-color: #ddd;
+    
+    margin-bottom: 10px;
+}
+
+.menu-popup-header{
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.menu-popup-links{
+    display:inline-block;
+    padding-top: 17px;
+}
+
+.menu-popup-singlelink{
+    display: inline-block;
+    font-family: 'Lato';
+    font-weight: '400';
+    letter-spacing: 0.5pt;
+    color: #ae2d4b;
+    padding-left: 14px;
+    font-size: 11pt;
+    /* cursor: pointer; */
+}
+
+.menu-popup-bottom{
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+
+.menu-popup-spacing-bottom{
+    padding: 20px;
+}
+
+.menu-popup-btn{
+    color: #444;
+    display: inline-block;
+    background-color: #F5F3F1;
+    width: 30%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    color: #ae2d4b;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+.menu-popup-btn-highlight{
+    background: linear-gradient(135deg, #ff3232 0%,#e244bb 100%);
+    color: #fff;
+}
+
+.menu-popup-icon{
+    font-size: 56px !important;
+}
+
+.menu-popup-label{
+    text-align: center;
+    font-size: 10pt;
+    font-weight: '100';
+}
+
+.pad{
+    background-image: url('photos/header-sushi-thing.jpg'); /* https://urbandine.templates.editmysite.com/uploads/8/9/5/0/89502725/background-images/39374136.png */
+    background-size: cover;
+    
+    padding-left: 20px;
+    padding-bottom: 40px;
+    padding-right: 20px;
+    color: white;
+    font-family: 'Roboto';
+    letter-spacing: 0.2px;
+}
+
+
+.logo{
+    margin-top: 20px;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 14pt;
+    color: #fff;
+    letter-spacing: 0.6px;
+}
+
+.pad-description{
+    padding-top: 50px;
+    font-weight: 900;
+}
+
+.pad-address{
+    padding-top: 15px;
+    font-weight: 100;
+    padding-bottom: 40px;
+}
+
+.pad-title{
+    padding-top: 5px;
+    font-weight: 100;
+    font-size: 33pt;
+}
+
+.pad-btn-full{
+    display: block;
+}
+
+.pad-btn{
+    display: inline-block;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #fff;
+    color: #333;
+    font-family: 'Lato';
+    
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ae2d4b+0,ff4245+100 */
+    background: #ae2d4b; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ae2d4b 0%, #ff4245 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #ae2d4b 0%,#ff4245 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #ae2d4b 0%,#ff4245 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ae2d4b', endColorstr='#ff4245',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    color: #fff;
+    font-size: 14pt;
+    
+    margin-bottom: 20px;
+}
+
+.pad-btn:hover{
+    margin-bottom: 0px;
+    border-bottom: solid;
+    border-width: 3px; /* .pad-btn's margin-bottom minus 3 */
+    margin-bottom: 17px;
+    border-color: #fff;
+}
+
+.pad-btn-clear{
+    font-size: 10pt;
+    margin-top: 30px;
+    margin-right: 5px;
+    display: inline-block;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    border-width: 1px;
+    border-bottom: solid;
+    border-bottom-color: #B20606;
+    border-color: rgba(255,255,255,0.7);;
+    background-color: rgba(255,255,255,0.15);
+    font-family: 'Lato';
+    transition: 0.5s ease;
+}
+
+.pad-btn-clear:active{
+    transition: 0.5s ease;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.pad-btn-clear:hover{
+    transition: 0.5s ease;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.pod{
+    background-color: #F5F3F1;
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Lato';
+    
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.pod-subtitle{
+    text-align: center;
+    font-size: 10pt;
+    font-family: 'Roboto';
+    font-weight: 100;
+    letter-spacing: 0.3px;
+    color: #444;
+    padding-bottom:10px;
+}
+
+.pod-star{
+    width: 20px;
+    padding-bottom: 5px;
+}
+
+.pod-title{
+    font-size: 26pt;
+    font-weight: 100;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Roboto';
+    color: #333;
+    font-weight: 700;
+}
+
+.pod-content{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: 'Lato';
+    font-weight: 100;
+    font-size: 15pt;
+}
+
+.pod-content-description{
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: left;
+    font-family: 'Merriweather';
+    font-weight: 100;
+    font-size: 13pt;
+    line-height: 1.6;
+    letter-spacing: 0.1px;
+    color: #333;
+}
+
+.pod-review{
+    text-align: center;
+}
+.pod-review-stars{
+    font-weight: 400;
+    font-family: 'Roboto';
+    letter-spacing: 0.5;
+    font-size: 10pt;
+}
+
+.pod-review-review{
+    margin-top: 10px;
+    font-size: 12pt;
+    font-family: 'Lato';
+    font-weight: 100;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.pod-btn{
+    display: inline-block;
+    padding: 17px;
+    padding-left: 35px;
+    padding-right: 35px;
+    color: #008AFC;
+    font-family: 'Lato';
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 11pt;
+    border-radius: 150px;
+}
+.pod-review-source{
+    
+}
+
+.pod-bg-cream{
+    background-color: #F5F3F1;
+}
+
+.footer{
+    margin: 20px;
+    text-align: center;
+    margin-bottom:140px;
+}
+
+.footer-text{
+    font-family: 'Lato';
+    color: #333;
+}
+
+.footer-year{
+    font-family: 'Roboto';
+    font-weight: 900;
+    font-size: 9pt;
+    letter-spacing: 0.5;
+    padding-top: 5px;
+    color: #333;
+}
+
+.footer-address{
+    font-family: 'Roboto';
+    font-weight: 100;
+    padding-top: 20px;
+    font-size: 10pt;
+}
