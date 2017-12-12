@@ -118,7 +118,7 @@ day_to_emoji = {
 day_to_description = {
     0 : "We're open today from <b>9:00am to 10:00pm</b>. Have a nice day!",
     1 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
-    2 : "Sorry! We're closed today. (We're treating ourselves to something nice!)",
+    2 : "Sorry! We're closed today. (Treat yourself to something nice!)",
     3 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
     4 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
     5 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
