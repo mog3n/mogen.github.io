@@ -1,0 +1,375 @@
+<html>
+	<head>
+		<title>Mogen's Coin Tracker</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Roboto+Mono" rel="stylesheet">
+		<style>
+			body{
+				font-family: 'Open Sans Condensed';
+				margin: 0;
+				padding: 0;
+				color: #fff;
+				font-size: 12px;
+			}
+			html{
+				margin: 0;
+				padding: 0;
+				cursor: default;
+			}
+			td{
+				padding: 5;
+				margin: 0;
+				border-spacing: 0px;
+				border: none;
+			}
+
+			tr{
+				transition: 0.2s ease;
+			}
+
+			tr:hover{
+				background-color: #111;
+				transition: 0.1s ease;
+			}
+			.title{
+				font-family: 'Roboto Mono';
+				display: inline-block;
+				background-color: blue;
+				color: white;
+				padding: 10;
+				padding-left: 30;
+				padding-right: 30;
+				transition: 0.5s ease;
+			}
+			.title:hover{
+				background-color: 000;
+				color: white;
+				transition: 0.1s ease;
+			}
+			.table{
+				width: 100%;
+				text-align: center;
+				padding: 20px;
+				border-spacing: 0px;
+			}
+			.table-title{
+				font-family: 'Open Sans Condensed';
+				font-size: 14px;
+				letter-spacing: 1px;
+				color: #aaa;
+			}
+			.header{
+				display: block;
+				margin-top: 20px;
+			}
+			.table-container{
+				display: flex;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.footer{
+				display: block;
+			}
+			.price{
+				font-family: 'Roboto Mono';
+				font-size: 16;
+			}
+			.price-up{
+				font-family: 'Roboto Mono';
+				color: #01aa78;
+				font-size: 12px;
+			}
+			.price-down{
+				font-family: 'Roboto Mono';
+				color: #ff5f73;
+				font-size: 12px;
+			}
+			.price-bg-up{
+				font-family: 'Roboto Mono';
+				color: #01aa78;
+				font-size: 12px;
+			}
+			.price-bg-down{
+				font-family: 'Roboto Mono';
+				color: #ff5f73;
+				font-size: 12px;
+			}
+			.updatebtn{
+				display: inline-block;
+				padding: 20;
+				padding-left:40;
+				padding-right: 40;
+				cursor: pointer;
+				background-color: #7AE7C7;
+				color: #339989;
+				border-radius: 5px;
+				transition: 0.2s ease;
+				margin-top: 10;
+				letter-spacing: 1;
+
+				border-width: 2px;
+				border-style: solid;
+				border-color: #000;
+			}
+			.updatebtn:hover{
+				transition: 0.2s ease;
+				margin-top: 0;
+				margin-bottom: 10;
+				color: #247BA0;
+			}
+			.updatebtn:active{
+				margin-top: 10;
+				letter-spacing: 1;
+				margin-bottom: 0;
+			}
+			.footerLastUpdate{
+				font-family: 'Roboto Mono';
+				display: inline-block;
+				padding-left: 15;
+				padding-right: 15;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				background-color: black;
+				color: white;
+				transition: 0.5s ease;
+				letter-spacing: 0.5px;
+			}
+			.footerLastUpdate:hover{
+				background-color: #000;
+				color: #fff;
+				transition: 0.1s ease;
+			}
+			a {
+			  color: black;
+			  text-decoration: none; /* no underline */
+			}
+			.updateTime{
+				color: #aaa;
+			}
+			.left{
+				background-color: #37474f;
+				width: 40%;
+				height: 100%;
+				overflow: auto;
+			}
+			iframe {
+				float: left;
+				margin: 0;
+				padding: 0;
+				border: none;
+				width: 60%;
+				height: 100%;
+			}
+			.hand{
+				cursor: pointer;
+			}
+			.price-mono{
+				font-family: 'Roboto Mono';
+				font-size: 12;
+			}
+			.nohover:hover{
+				background-color: inherit;
+			}
+
+			.subtitle{
+				background-color: blue;
+				color: white;
+				font-family: 'Roboto Mono';
+				font-size: 20;
+				display: inline-block;
+				padding: 10;
+				padding-left: 30;
+				padding-right: 30;
+			}
+			.table-name{
+				font-family: 'Roboto Mono';
+				font-weight: 300;
+				font-size: 12;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<iframe id="right" src="https://coinmarketcap.com/"></iframe>
+		</div>
+		<div class="left">
+			<div class="header">
+				<a href=""><h1 class="title">Mogen's Coin Tracker</h1></a>
+			</div>
+
+			<div class="footerLastUpdate"><h5 id="time-local">LOCAL: 10:30 AM</h5></div>
+			<div class="footerLastUpdate"><h5 id="time-utc">UTC: 10:30 AM</h5></div>
+			<div class="footerLastUpdate"><h5 id="time-jpn">JPN: 10:30 AM</h5></div>
+			<div class="footerLastUpdate"><h5 id="time-bei">BEI: 10:30 AM</h5></div>
+			<div class="footerLastUpdate" style="background-color: blue"><h5 id="time-sec"></h5></div>
+
+			<div class="table-container">
+				<table class="table" id="coindata">
+				</table>
+			</div>
+			<div class="footer">
+				<div class="footerLastUpdate"><h5 id="lastupdate"></h5></div>
+			</div>
+			<!-- <div class="subtitle">News</div> -->
+		</div>
+	</body>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+
+		lastUpdated = 0;
+		lastUpdateObject = null;
+		requestUpdate = false;
+
+		function precisionRound(number, precision) {
+		  var factor = Math.pow(10, precision);
+		  return Math.round(number * factor) / factor;
+		}
+
+		function volToText(num){
+			num = parseFloat(num);
+			commas = "";
+			if (num > 1000000000) {
+				num = precisionRound(num/1000000000, 1);
+				commas = "bn";
+			}
+			else if(num > 1000000) {
+				num = precisionRound(num/1000000, 1);
+				commas = "m"
+			}
+
+			return (num + " " + commas);
+		}
+
+		function updateCoins() {
+			wanted = [
+				"ethereum",
+				"dragonchain",
+				"tron",
+				"neo",
+				"zcash",
+				"omisego",
+				"vechain",
+				"reddcoin",
+				'deepbrain-chain',
+				'bitcoin',
+			];
+
+			limit = "150";
+			url = "https://api.coinmarketcap.com/v1/ticker/?limit=" + limit;
+			fetch(url)
+				.then( (res) => res.json() )
+				.then( (data) => {
+					//print(data);
+					tempStr = '<tr class="table-title nohover"><th></th><th></th><th>$</th><th>1d ago</th><th>1w ago</th><th>24h Vol</th></tr>';
+					lastUpdateObject = data;
+					for(i=0; i<parseInt(limit); i++){
+						coin = data[i]; // grab coin object
+						//print(coin);
+						// Check if coin is in the wanted list
+						if(wanted.findIndex(crypto => crypto == coin.id) != -1){
+
+							// Get price 24 hr ago
+							// Current price / percent change
+							price_yesterday = parseFloat(coin['price_usd']) / (1+parseFloat(coin['percent_change_24h'])/100);
+							price_lastweek = parseFloat(coin['price_usd']) / (1+parseFloat(coin['percent_change_7d'])/100);
+							// Check if price has gone up since 24h
+							changeColor = "";
+							changeBgColor = "";
+							if (price_yesterday >= precisionRound(coin['price_usd'],4)){
+								changeColor = "price-down";
+								changeBgColor = "price-bg-down"
+							}else{
+								changeColor = "price-up";
+								changeBgColor = "price-bg-up";
+							}
+
+							tempStr += "<tr class='hand' onClick=goToPage('https://coinmarketcap.com/currencies/" + coin['id'] + "')>";
+							tempStr += "<td class='" + changeColor + "'>" + coin['percent_change_24h'] + "%</td>";
+							tempStr += "<td>" + coin['name'] + " (" + coin['symbol'] + ")</a></td>";
+							tempStr += "<td class='price " + changeBgColor  + "'>" + precisionRound(coin['price_usd'],4) + "</td>";
+							tempStr += "<td class='price-mono'>" + precisionRound(price_yesterday, 4) + "</td>";
+							tempStr += "<td class='price-mono'>" + precisionRound(price_lastweek, 4) + "</td>";
+							tempStr += "<td class='price-mono'>" + volToText(coin['24h_volume_usd']) + "</td>";
+
+							updateTime = parseInt(coin['last_updated']);
+							updateTime = precisionRound((Date.now() - (parseFloat(coin['last_updated'])*1000))/1000,0);
+							time = "sec";
+							if (updateTime > 60){
+								time = "min";
+								updateTime = Math.floor(updateTime/60);
+
+								if(updateTime > 60) {
+									time = "hr";
+									updateTime = Math.floor(updateTime/60);
+								}
+							}
+
+							//tempStr += "<td class='updateTime'>" + updateTime + " " + time + "</td>";
+							tempStr += "</tr>";
+
+							if(coin.id == "ethereum"){
+								lastUpdated = parseInt(coin['last_updated']);
+							}
+						}
+					}
+					$("#coindata").html(tempStr);
+			});
+		}
+
+		function updateAll(){
+			updateCoins();
+		}
+
+		function goToPage(url){
+			$("#right").attr('src', url);
+		}
+
+		updateAll();
+
+		setInterval(function(){
+			// Update coin
+			// Get the time last updated
+			diff = precisionRound(((Date.now() - (lastUpdated*1000))/1000),0);
+
+			time = "seconds";
+			if (diff >= 60){
+				time = "minute(s)";
+				diff = Math.floor(diff/60);
+
+				if(diff >= 60) {
+					time = "hour(s)";
+					diff = Math.floor(diff/60);
+				}
+			}
+			$("#lastupdate").html("The last update was " + diff + " " + time + " ago.");
+
+			if(requestUpdate){
+				updateAll();
+				requestUpdate = false;
+			}
+
+			// Update the time
+			// time-local, time-bei, time-jpn, time-utc
+			var today = new Date();
+			hour = today.getUTCHours();
+			minute = today.getUTCMinutes();
+
+			$('#time-local').html("LOCAL - " + (today.getHours()) + ":" + minute );
+			$('#time-utc').html("UTC - " + (hour) + ":" + minute );
+			if (hour+9 > 23) { hour -= 9 };
+			$('#time-jpn').html("TOK/SEO - " + (hour+9) + ":" + minute );
+			hour += 9;
+			if (hour+8 > 23) { hour -= 8 };
+			$('#time-bei').html("BEI - " + (hour+8) + ":" + minute );
+			$('#time-sec').html(today.getSeconds());
+
+
+		}, 250);
+
+		setInterval(function() {
+			updateAll();
+		}, 60000);
+
+	</script>
+</html>
