@@ -4,3 +4,4 @@ Allow: /
 Disallow: /annual-specials
 Disallow: /emojis
 Disallow: /photos
+Disallow: /coin
