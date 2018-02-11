@@ -107,22 +107,22 @@ date_to_obj = {0: "day-sun", 1: "day-mon", 2: "day-tue", 3: "day-wed", 4: "day-t
 day_to_str = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
 time_to_obj = {0: "time-sun", 1: "time-mon", 2: "time-tue", 3: "time-wed", 4: "time-thur", 5: "time-fri", 6: "time-sat"}
 day_to_emoji = {
-    0 : '<img src="emojis/happy.png" style="width:60px;">',
-    1 : '<img src="emojis/happy.png" style="width:60px;">',
-    2 : '<img src="emojis/less_happy.png" style="width:60px;">',
-    3 : '<img src="emojis/happy.png" style="width:60px;">',
-    4 : '<img src="emojis/happy.png" style="width:60px;">',
-    5 : '<img src="emojis/happy.png" style="width:60px;">',
-    6 : '<img src="emojis/happy.png" style="width:60px;">'
+    0 : '<img src="emojis/food-happy.png" style="width:60px;">',
+    1 : '<img src="emojis/food-happy.png" style="width:60px;">',
+    2 : '<img src="emojis/less-happy.png" style="width:60px;">',
+    3 : '<img src="emojis/food-happy.png" style="width:60px;">',
+    4 : '<img src="emojis/food-happy.png" style="width:60px;">',
+    5 : '<img src="emojis/food-happy.png" style="width:60px;">',
+    6 : '<img src="emojis/food-happy.png" style="width:60px;">'
 };
 day_to_description = {
-    0 : "We're open today from <b>9:00am to 10:00pm</b>. Have a nice day!",
-    1 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
-    2 : "Sorry! We're closed today. (Treat yourself to something nice!)",
-    3 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
-    4 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
-    5 : "We're open today from <b>10:00am to 9:00pm</b>. Have a nice day!",
-    6 : "We're open today from <b>9:00am to 10:00pm</b>. Have a nice day!"
+    0 : "We're open from <b>9:00am to 10:00pm</b> today.",
+    1 : "We're open from <b>10:00am to 9:00pm</b> today.",
+    2 : "Sorry, We're closed today. (Treat yourself to something nice!)",
+    3 : "We're open from <b>10:00am to 9:00pm</b> today.",
+    4 : "We're open from <b>10:00am to 9:00pm</b> today.",
+    5 : "We're open from <b>10:00am to 9:00pm</b> today.",
+    6 : "We're open from <b>9:00am to 10:00pm</b> today."
 }
 
 // Set appropriate object

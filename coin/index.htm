@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		  <meta name="description" content="All my favourite coins in one place">
 		  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-		  <meta name="author" content="Mogen Cheng>
+		  <meta name="author" content="Mogen Cheng">
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<style>
@@ -40,7 +40,7 @@
 			.title{
 				font-family: 'Roboto Mono';
 				display: inline-block;
-				background-color: blue;
+				background-color: black;
 				color: white;
 				padding: 10;
 				padding-left: 30;
@@ -154,7 +154,7 @@
 			}
 			.left{
 				background-color: #37474f;
-				width: 40%;
+				width: 65%;
 				height: 100%;
 				overflow: auto;
 			}
@@ -163,7 +163,7 @@
 				margin: 0;
 				padding: 0;
 				border: none;
-				width: 60%;
+				width: 35%;
 				height: 100%;
 			}
 			.hand{
@@ -187,10 +187,41 @@
 				padding-left: 30;
 				padding-right: 30;
 			}
+			.subtitle-btn{
+				background-color: black;
+				color: white;
+				font-family: 'Roboto Mono';
+				font-size: 20;
+				display: inline-block;
+				padding: 10;
+				padding-left: 30;
+				padding-right: 30;
+				cursor: pointer;
+				transition: 0.2s ease;
+			}
+			.subtitle-btn:hover{
+				background-color: blue;
+				transition: 0.1s ease;
+			}
 			.table-name{
 				font-family: 'Roboto Mono';
 				font-weight: 300;
 				font-size: 12;
+			}
+			.text{
+				width: 30%;
+				font-family: 'Roboto Mono';
+				font-size: 20;
+				display: inline-block;
+				padding: 10;
+				padding-left: 30;
+				padding-right: 30;
+				background-color: black;
+				color: white;
+				border: none;
+			}
+			.text:focus{
+				outline: none;
 			}
 		</style>
 	</head>
@@ -217,7 +248,18 @@
 			<div class="footer">
 				<div class="footerLastUpdate"><h5 id="lastupdate"></h5></div>
 			</div>
-			<!-- <div class="subtitle">News</div> -->
+			<div>
+				<div class="subtitle" id="ethusd-title">1 ETH = ERROR</div>
+				<input type="text" id="ethusd-in" class="text" onfocus="this.value=this.value;" value="0." />
+				<span id="ethusd-coin"></span>
+				<div class="subtitle-btn" id="ethusd-out" onclick="addToDecimalHistory()">0 USD</div>
+			</div>
+
+			<div class="table-container">
+				<table class="table" id="tradedata">
+				</table>
+			</div>
+
 		</div>
 	</body>
 
@@ -227,6 +269,8 @@
 		lastUpdated = 0;
 		lastUpdateObject = null;
 		requestUpdate = false;
+		ethPrice = 0.0;
+		listOfCoins = [];
 
 		function precisionRound(number, precision) {
 		  var factor = Math.pow(10, precision);
@@ -273,6 +317,10 @@
 					for(i=0; i<parseInt(limit); i++){
 						coin = data[i]; // grab coin object
 						//print(coin);
+
+						// Add the coin to the list of coins
+						listOfCoins.push(coin['symbol']);
+
 						// Check if coin is in the wanted list
 						if(wanted.findIndex(crypto => crypto == coin.id) != -1){
 
@@ -317,11 +365,23 @@
 
 							if(coin.id == "ethereum"){
 								lastUpdated = parseInt(coin['last_updated']);
+								ethPrice = parseFloat(coin['price_usd']);
 							}
 						}
 					}
 					$("#coindata").html(tempStr);
+					//updateSelectBtn();
 			});
+		}
+
+		function updateSelectBtn(){
+			// Update the ethusd-coin SELECT html list with the list of coins
+			coinListRaw = "<select id='ethusd-select'>";
+			for (i=0;i < listOfCoins.length; i++){
+				coinListRaw += "<option>" + listOfCoins[i] + "</option>";
+			}
+			coinListRaw += "</select>";
+			$('#ethusd-coin').html(coinListRaw);
 		}
 
 		function updateAll(){
@@ -332,7 +392,6 @@
 			$("#right").attr('src', url);
 		}
 
-		updateAll();
 
 		setInterval(function(){
 			// Update coin
@@ -349,7 +408,7 @@
 					diff = Math.floor(diff/60);
 				}
 			}
-			$("#lastupdate").html("The last update was " + diff + " " + time + " ago.");
+			$("#lastupdate").html("Data was last updated was " + diff + " " + time + " ago. Auto refresh is enabled.");
 
 			if(requestUpdate){
 				updateAll();
@@ -364,19 +423,79 @@
 
 			$('#time-local').html("LOCAL - " + (today.getHours()) + ":" + minute );
 			$('#time-utc').html("UTC - " + (hour) + ":" + minute );
-			if (hour+9 > 23) { hour -= 9 };
-			$('#time-jpn').html("TOK/SEO - " + (hour+9) + ":" + minute );
-			hour += 9;
-			if (hour+8 > 23) { hour -= 8 };
-			$('#time-bei').html("BEI - " + (hour+8) + ":" + minute );
+			if (hour+9 > 23) { hour = (hour+9-24) };
+			$('#time-jpn').html("TOK/SEO - " + (hour) + ":" + minute );
+			hour = today.getHours();
+			if (hour+8 > 23) { hour = (hour+8-24) };
+			$('#time-bei').html("BEI - " + (hour) + ":" + minute );
 			$('#time-sec').html(today.getSeconds());
 
+			// Update the eth to usd
+			amount = $('#ethusd-in').val();
+			$('#ethusd-title').html("1 ETH = " + precisionRound(ethPrice, 1));
+
+			try {
+				amount = parseFloat(amount);
+				$('#ethusd-out').html(precisionRound(amount*ethPrice,2) + " USD");
+				if (amount == null) {
+					$('#ethusd-out').html("0.00 USD");
+				}
+			}catch(err){}
 
 		}, 250);
+
+		decHistoryArr = [];
+
+		function addToDecimalHistory() {
+			try{
+				amount = parseFloat($('#ethusd-in').val());
+				time = Date.now();
+
+				decHistoryArr.push({
+					amount: amount,
+					timestamp: time,
+					ethAtm: ethPrice,
+					usd: precisionRound(amount*ethPrice,2),
+				});
+				$('#ethusd-in').val("0.");
+				$('#ethusd-in').focus().select();
+				updateDecHistory();
+			}catch(err){
+				console.log(err);
+			}
+		}
+
+		function updateDecHistory() {
+			console.log(decHistoryArr);
+			tempStr = '<tr class="table-title nohover"><th>TIME</th><th>PRICE PURCHASED AT</th><th>USD</th><th>ETH</th></tr>';
+
+			// loop through 'decHistoryArr'
+			for (i=0; i<decHistoryArr.length;i++){
+				obj = decHistoryArr[i];
+
+				time = new Date(obj['timestamp']);
+				timeStr = time.getUTCHours() + ":" + time.getUTCMinutes() + " (UTC)";
+				console.log(timeStr);
+
+				tempStr += "<tr>";
+				tempStr += "<td>" + timeStr + "</td>";
+				tempStr += "<td class='price-mono'>" + obj['amount'] + "</td>";
+				tempStr += "<td class='price-mono'>" + obj['usd'] + "</td>";
+				tempStr += "<td class='price-mono'>" + obj['ethAtm'] + "</td>";
+				tempStr += "</tr>";
+			}
+			tempStr += '</tr>';
+
+			$('#tradedata').html(tempStr);
+		}
 
 		setInterval(function() {
 			updateAll();
 		}, 60000);
+
+		// init
+		updateAll();
+		$('#ethusd-in').focus().select();
 
 	</script>
 </html>
