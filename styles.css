@@ -161,8 +161,9 @@ body{
 }
 
 .pad{
-    background-image: url('photos/header-sushi-thing.jpg'); /* https://urbandine.templates.editmysite.com/uploads/8/9/5/0/89502725/background-images/39374136.png */
+    background-image: url('photos/steakbg.jpg'); /* https://urbandine.templates.editmysite.com/uploads/8/9/5/0/89502725/background-images/39374136.png */
     background-size: cover;
+    background-position: center;
     
     padding-left: 20px;
     padding-bottom: 40px;
@@ -365,6 +366,11 @@ body{
 }
 .pod-review-source{
     
+}
+
+.menu-full{
+    width: 100%;
+    height: auto;
 }
 
 .pod-bg-cream{

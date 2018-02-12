@@ -109,16 +109,17 @@ time_to_obj = {0: "time-sun", 1: "time-mon", 2: "time-tue", 3: "time-wed", 4: "t
 day_to_emoji = {
     0 : '<img src="emojis/food-happy.png" style="width:60px;">',
     1 : '<img src="emojis/food-happy.png" style="width:60px;">',
-    2 : '<img src="emojis/less-happy.png" style="width:60px;">',
+    2 : '<img src="emojis/food-happy.png" style="width:60px;">', // <img src="emojis/less-happy.png" style="width:60px;">
     3 : '<img src="emojis/food-happy.png" style="width:60px;">',
     4 : '<img src="emojis/food-happy.png" style="width:60px;">',
     5 : '<img src="emojis/food-happy.png" style="width:60px;">',
     6 : '<img src="emojis/food-happy.png" style="width:60px;">'
 };
+// "Sorry, We're closed today. (Treat yourself to something nice!)"
 day_to_description = {
     0 : "We're open from <b>9:00am to 10:00pm</b> today.",
     1 : "We're open from <b>10:00am to 9:00pm</b> today.",
-    2 : "Sorry, We're closed today. (Treat yourself to something nice!)",
+    2 : "We're open from <b>4:30pm to 9:00pm</b> today.",
     3 : "We're open from <b>10:00am to 9:00pm</b> today.",
     4 : "We're open from <b>10:00am to 9:00pm</b> today.",
     5 : "We're open from <b>10:00am to 9:00pm</b> today.",
